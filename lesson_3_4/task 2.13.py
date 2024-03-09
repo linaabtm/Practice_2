@@ -4,7 +4,7 @@ import numpy as np
 from scipy.integrate import odeint
 def func(y,t):
     u, f = y
-    dydt = [2 * u - f, u]
+    dydt = [ 2*u-f, u]
     return dydt
 dt=1e-3
 t = np.arange(0,1,dt)
