@@ -4,3 +4,4 @@ b=np.full((2,2), 1)
 print(a)
 print(b)
 
+
