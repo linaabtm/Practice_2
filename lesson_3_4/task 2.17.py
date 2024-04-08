@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 import warnings
 from scipy.optimize import minimize
-
 def get_path(xc):
     global path
     path.append(xc)
@@ -13,7 +12,6 @@ def gauss(z, sigma, x0, y0):
     return np.exp(-((x-x0)**2 + (y-y0)**2) / sigma**2)
 
 neg_gauss = lambda z, sigma, x0, y0: -gauss(z, sigma, x0, y0)
-
 x = np.linspace(-20, 20, 100)
 y = np.linspace(-20, 20, 100)
 X, Y = np.meshgrid(x, y)
@@ -39,7 +37,6 @@ print(" ".join(str(i) for i in res.x))
 path = [(15, 10)]
 result = minimize(neg_gauss, (15, 10), args=(100, 0, 0), callback=get_path,)
 path = np.array(path)
-
 fig, ax = plt.subplots(1, 1, figsize=(6, 6))
 contours = plt.contour(X, Y, Z, 15, colors="black", linewidths=2,
 linestyles='-.')
