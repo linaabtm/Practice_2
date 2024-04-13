@@ -1,9 +1,14 @@
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
-x = np.linspace(-10 ,10, 1000)
-y = np.linspace(-10 ,10, 1000)
-plt.figure(figsize=(10,5))
-plt.grid(lw=0.5, ls='--')
-plt.plot(x, ((np.sin(x**2+y**2))/(x**2+y**2)),lw = 4, color = 'red',zorder = 0)
+fig = plt.figure(figsize=(8, 8))
+ax_3d = fig.add_subplot(projection='3d')
+x = np.arange(-5, 5, 0.01)
+y = np.arange(-5, 5, 0.01)
+xgrid, ygrid = np.meshgrid(x, y)
+zgrid = (np.sin(xgrid**2+ygrid**2))/(xgrid**2+ygrid**2)
+ax_3d.plot_surface(xgrid, ygrid, zgrid, rstride=3, cstride=3, cmap='ocean')
+plt.xticks(np.arange(min(x), max(x)+1, 1.0))
+plt.yticks(np.arange(min(x), max(x)+1, 1.0))
 plt.show()
